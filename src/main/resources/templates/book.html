@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Book Table</title>
+</head>
+<body>
+<!-- 取得迭代狀態 -->
+<table width="60%" border="1">
+    <tr>
+    <th>Count</th><th>Index</th><th>Book ID</th><th>Book Name</th><th>Price</th>
+    <th>First Row</th><th>Last Row</th>
+    </tr>
+    <tr th:each="book, stat : ${books}">
+        <td th:text="${stat.count}">1</td>
+        <td th:text="${stat.index}">0</td>
+        <td th:text="${book.id}">ID</td>
+        <td th:text="${book.bookName}">Book Name</td>
+        <td th:text="${book.price}">Book Price</td>
+        <td th:text="${stat.first}">是否第一筆</td>
+        <td th:text="${stat.last}">是否最後一筆</td>
+    </tr>
+</table>
+<!-- stat index：當前迭代的索引，從 0 開始。count：當前迭代的計數，從 1 開始。size：
+   被迭代集合的總元素數量。current：當前迭代的元素物件。
+   even / odd：布林值，判斷當前是否為偶數或奇數次迭代。
+       first：布林值，判斷是否為第一次（首個）迭代。
+       last：布林值，判斷是否為最後一次迭代。 -->
+
+</body>
+</html>
